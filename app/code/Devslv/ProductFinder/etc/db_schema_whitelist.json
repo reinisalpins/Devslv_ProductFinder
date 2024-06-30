@@ -1,0 +1,40 @@
+{
+    "devslv_productfinder_carbrands": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "code": true,
+            "image_url": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        },
+        "search": {
+            "DEVSLV_PRODUCTFINDER_CARBRANDS_ENTITY_ID": true
+        }
+    },
+    "devslv_productfinder_carmodels": {
+        "column": {
+            "entity_id": true,
+            "carbrand_entity_id": true,
+            "name": true,
+            "code": true,
+            "image_url": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_CARMODEL_CARBRAND_ID": true
+        }
+    },
+    "devslv_productfinder_carmodelproducts": {
+        "column": {
+            "catalog_product_entity_id": true,
+            "carmodel_entity_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_CARMODELPRODUCT_CARMODEL_ID": true,
+            "FK_CARMODELPRODUCT_CATALOG_PRODUCT_ID": true
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Devslv\ProductFinder\Api\CarBrandRepositoryInterface" type="Devslv\ProductFinder\Model\CarBrandRepository" />
+    <preference for="Devslv\ProductFinder\Api\Data\CarBrandInterface" type="Devslv\ProductFinder\Model\CarBrand"/>
+    <preference for="Devslv\ProductFinder\Api\Data\CarBrandSearchResultsInterface" type="Devslv\ProductFinder\Model\CarBrandSearchResults"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="devslv_productfinder_carbrand_listing_data_source" xsi:type="string">DevslvProductFinderCarBrandCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DevslvProductFinderCarBrandCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">devslv_productfinder_carbrands</argument>
+            <argument name="resourceModel" xsi:type="string">Devslv\ProductFinder\Model\ResourceModel\CarBrand</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Devslv\ProductFinder\Api\CarModelRepositoryInterface" type="Devslv\ProductFinder\Model\CarModelRepository" />
+    <preference for="Devslv\ProductFinder\Api\Data\CarModelInterface" type="Devslv\ProductFinder\Model\CarModel"/>
+    <preference for="Devslv\ProductFinder\Api\Data\CarModelSearchResultsInterface" type="Devslv\ProductFinder\Model\CarModelSearchResults"/>
+
+    <preference for="Devslv\ProductFinder\Api\CarModelProductRepositoryInterface" type="Devslv\ProductFinder\Model\CarModelProductRepository" />
+    <preference for="Devslv\ProductFinder\Api\Data\CarModelProductInterface" type="Devslv\ProductFinder\Model\CarModelProduct"/>
+    <preference for="Devslv\ProductFinder\Api\Data\CarModelProductSearchResultsInterface" type="Devslv\ProductFinder\Model\CarModelProductSearchResults"/>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="devslv_productfinder_carmodelproduct_listing_data_source" xsi:type="string">DevslvProductFinderCarModelProductCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DevslvProductFinderCarModelProductCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">devslv_productfinder_carmodelproducts</argument>
+            <argument name="resourceModel" xsi:type="string">Devslv\ProductFinder\Model\ResourceModel\CarModelProduct</argument>
+        </arguments>
+    </virtualType>
+</config>

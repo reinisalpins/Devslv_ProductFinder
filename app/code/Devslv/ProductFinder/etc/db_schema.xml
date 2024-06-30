@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="devslv_productfinder_carbrands" engine="innodb" comment="CARBRANDs">
+        <column name="entity_id" xsi:type="bigint" comment="entity_id" nullable="false" identity="true" unsigned="true"/>
+        <column name="name" xsi:type="varchar" comment="name" nullable="true"/>
+        <column name="code" xsi:type="varchar" comment="code" nullable="true"/>
+        <column name="image_url" xsi:type="text" comment="image_url" nullable="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="DEVSLV_PRODUCTFINDER_CARBRANDS_ENTITY_ID" indexType="fulltext">
+            <column name="name"/>
+            <column name="code"/>
+            <column name="image_url"/>
+        </index>
+    </table>
+    <table name="devslv_productfinder_carmodels" engine="innodb" comment="CARMODELs">
+        <column name="entity_id" xsi:type="bigint" comment="entity_id" nullable="false" identity="true" unsigned="true"/>
+        <column name="carbrand_entity_id" xsi:type="bigint" comment="carbrand_entity_id" nullable="false" unsigned="true"/>
+        <column name="name" xsi:type="varchar" comment="name" nullable="true"/>
+        <column name="code" xsi:type="varchar" comment="code" nullable="true"/>
+        <column name="image_url" xsi:type="text" comment="image_url" nullable="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_CARMODEL_CARBRAND_ID" table="devslv_productfinder_carmodels" column="carbrand_entity_id" referenceTable="devslv_productfinder_carbrands" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+    <table name="devslv_productfinder_carmodelproducts" engine="innodb" comment="CARMODELPRODUCTs">
+        <column name="catalog_product_entity_id" xsi:type="int" padding="10" comment="catalog_product_entity_id" nullable="false" unsigned="true"/>
+        <column name="carmodel_entity_id" xsi:type="bigint" comment="carmodel_entity_id" nullable="false" unsigned="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="catalog_product_entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_CARMODELPRODUCT_CARMODEL_ID" table="devslv_productfinder_carmodelproducts" column="carmodel_entity_id" referenceTable="devslv_productfinder_carmodels" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="FK_CARMODELPRODUCT_CATALOG_PRODUCT_ID" table="devslv_productfinder_carmodelproducts" column="catalog_product_entity_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

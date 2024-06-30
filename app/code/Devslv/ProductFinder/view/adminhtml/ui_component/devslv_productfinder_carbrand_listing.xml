@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">devslv_productfinder_carbrand_listing.devslv_productfinder_carbrand_listing_data_source</item>
+    </item>
+    <item name="buttons" xsi:type="array">
+      <item name="add" xsi:type="array">
+        <item name="name" xsi:type="string">new</item>
+        <item name="label" xsi:type="string" translate="true">Add New Car Brand</item>
+        <item name="url" xsi:type="string">devslv_productfinder/carbrand/new</item>
+        <item name="class" xsi:type="string">primary</item>
+      </item>
+    </item>
+  </argument>
+  <settings>
+    <deps>
+      <dep>devslv_productfinder_carbrand_listing.devslv_productfinder_carbrand_listing_data_source</dep>
+    </deps>
+    <spinner>devslv_productfinder_carbrand_columns</spinner>
+  </settings>
+  <dataSource name="devslv_productfinder_carbrand_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <settings>
+      <updateUrl path="mui/index/render"/>
+      <storageConfig>
+        <param name="indexField" xsi:type="string">entity_id</param>
+      </storageConfig>
+    </settings>
+    <aclResource>ProductFinder_Devslv::CarBrand</aclResource>
+    <dataProvider name="devslv_productfinder_carbrand_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+      <settings>
+        <requestFieldName>entity_id</requestFieldName>
+        <primaryFieldName>entity_id</primaryFieldName>
+      </settings>
+    </dataProvider>
+  </dataSource>
+  <listingToolbar name="listing_top">
+    <settings>
+      <sticky>true</sticky>
+    </settings>
+    <paging name="listing_paging"/>
+    <filterSearch name="fulltext"/>
+  </listingToolbar>
+  <columns name="devslv_productfinder_carbrand_columns">
+    <column name="entity_id">
+      <settings>
+        <label translate="true">Entity Id</label>
+      </settings>
+    </column>
+    <column name="name">
+      <settings>
+        <label translate="true">Name</label>
+      </settings>
+    </column>
+    <column name="code">
+      <settings>
+        <label translate="true">Code</label>
+      </settings>
+    </column>
+    <column name="image_url">
+      <settings>
+        <label translate="true">Image Url</label>
+      </settings>
+    </column>
+    <actionsColumn name="actions" class="Devslv\ProductFinder\Ui\Component\Listing\Column\Actions">
+      <settings>
+        <indexField>entity_id</indexField>
+      </settings>
+    </actionsColumn>
+  </columns>
+</listing>

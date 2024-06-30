@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Devslv_ProductFinder::CarBrand" title="Car Brands" translate="title" module="Devslv_ProductFinder" sortOrder="9999" parent="Magento_Catalog::catalog" resource="Devslv_ProductFinder::CarBrand" action="devslv_productfinder&#x2F;carbrand&#x2F;/index" />
+    </menu>
+</config>
